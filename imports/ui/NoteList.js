@@ -33,9 +33,9 @@ NoteList.propTypes = {
 export default createContainer(() => {
 	const selectedNoteId = Session.get('selectedNoteId')
 	Meteor.subscribe('notes');
-
+	const sortedNotes = Notes.find({}, {sort: {updatedAt: -1}}).fetch()
 	return {
-		notes: Notes.find().fetch().map((note) => {
+		notes: sortedNotes.map((note) => {
 			return {
 				...note,
 				selected: (note._id === selectedNoteId)
