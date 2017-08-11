@@ -12,6 +12,7 @@ export const NoteListHeader = (props) => {
 				props.meteorCall('notes.insert', (err, res) => {
 					if(res){
 						props.Session.set('selectedNoteId', res);
+						
 					}
 				});
 			}}>Create Note</button>
